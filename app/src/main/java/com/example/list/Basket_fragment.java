@@ -34,6 +34,9 @@ public class Basket_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        for (int i = 0; i < 200; i++)
+            field.add(new Field(String.valueOf(i), R.mipmap.ic_launcher_round));
+
         list = view.findViewById(R.id.List);
 
         MyListAdapter adapter = new MyListAdapter(getContext(), R.layout.list_item, field);

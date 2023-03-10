@@ -31,7 +31,8 @@ public class Menu_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        field.add(new Field("Pizza", R.mipmap.ic_launcher_round));
+        for (int i = 0; i < 200; i++)
+            field.add(new Field(String.valueOf(i), R.mipmap.ic_launcher_round));
 
         RecyclerView list = view.findViewById(R.id.Recycler);
 
