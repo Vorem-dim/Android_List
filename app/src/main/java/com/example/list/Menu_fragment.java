@@ -7,10 +7,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,7 +38,15 @@ public class Menu_fragment extends Fragment {
 
         RecyclerView list = view.findViewById(R.id.Recycler);
 
-        RecycleAdapter adapter = new RecycleAdapter(getContext(), field);
+        RecycleAdapter.OnClickListener clickListener = new RecycleAdapter.OnClickListener() {
+            @Override
+            public void OnClick(Field field, int position) {
+                Toast.makeText(getContext(), field.getText(), Toast.LENGTH_LONG).show();
+                Log.i("TAG", field.getText());
+            }
+        };
+
+        RecycleAdapter adapter = new RecycleAdapter(getContext(), field, clickListener);
 
         list.setAdapter(adapter);
     }

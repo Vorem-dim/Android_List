@@ -7,12 +7,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -42,5 +44,15 @@ public class Basket_fragment extends Fragment {
         MyListAdapter adapter = new MyListAdapter(getContext(), R.layout.list_item, field);
 
         list.setAdapter(adapter);
+
+        AdapterView.OnItemClickListener ItemListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Field select = (Field) parent.getItemAtPosition(position);
+                Toast.makeText(getContext(), select.getText(), Toast.LENGTH_LONG).show();
+                Log.i("TAG", select.getText());
+            }
+        };
+        list.setOnItemClickListener(ItemListener);
     }
 }
